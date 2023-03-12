@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  main:
+    build: .
+    container_name: Memo
+    volumes:
+      - "./src:/var/www/html"
+    ports:
+      - 8081:80
+    restart: always

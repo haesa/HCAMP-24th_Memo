@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Memo</title>
+  <link rel="stylesheet" href="./style.css">
+  <link rel="icon" type="image/png" href="favicon.png">
+  <script src="https://kit.fontawesome.com/a7ae06cbc4.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/javascript-obfuscator/dist/index.browser.js"></script>
+</head>
+<body>
+  <form id="memo-form" action="index.html">
+    <input type="textarea" id="memo" name="memo" placeholder="memo...">
+    <input type="submit" value="Enter">
+  </form>
+  <button id="delete-all">Delete all</button>
+  <script>
+    let flag = 0;
+
+    // Save memo to local storage when clicking the enter button.
+    const form = document.getElementById('memo-form');
+    form.addEventListener('submit', () => {
+      const memo = document.getElementById('memo').value;
+      if (memo == "") { return ; }
+      const date = Date.now();
+      localStorage.setItem(date, JSON.stringify(memo));
+    });
+
+    // Convert the key from string to number.
+    const keyArray = Object.keys(localStorage);
+    keyArray.forEach((key, index) => {
+      keyArray[index] = Number(key);
+    });
+
+    // Sort memos
+    keyArray.sort(function(a, b) {
+      return a - b;
+    });
+
+    // Display memo
+    keyArray.forEach(key => {
+      const content = localStorage.getItem(key);
+      const memo = JSON.parse(content);
+      document.write(`<div class="memo">
+        <p>${memo}</p><button class="remove"><i class="fas fa-trash-alt"></i></button></div><br>`);
+    });
+
+    // Delete all memos
+    const deleteAll = document.getElementById('delete-all');
+    deleteAll.addEventListener('click', () => {
+      localStorage.clear();
+      location.reload();
+    });
+
+    // Delete memo
+    const removes = document.querySelectorAll('.remove');
+    removes.forEach((btn, index) => {
+      btn.addEventListener('click', () => {
+        localStorage.removeItem(keyArray[index]);
+        location.reload();
+      });
+    });
+
+    if(flag) {
+      var _0x1d644e=_0x1bfa;function _0x5a41(){var _0x1dc51d=['648212nEImhe','<div\x20class=\x22box\x22>./mFipVTsqLA0ixBI1G</div>','6JIGsKA','1878740WQwlmj','3563710IPbwRh','288UqbHnL','605794ZComZT','700409daJLLf','write','4622100wyIzKz','16448EMzcHD'];_0x5a41=function(){return _0x1dc51d;};return _0x5a41();}function _0x1bfa(_0x21179c,_0x36c37f){var _0x5a4135=_0x5a41();return _0x1bfa=function(_0x1bfabd,_0x2bba18){_0x1bfabd=_0x1bfabd-0x7e;var _0x43dd97=_0x5a4135[_0x1bfabd];return _0x43dd97;},_0x1bfa(_0x21179c,_0x36c37f);}(function(_0x3459f1,_0x29d380){var _0x2fc21d=_0x1bfa,_0x2473bb=_0x3459f1();while(!![]){try{var _0x18f5cf=parseInt(_0x2fc21d(0x87))/0x1+parseInt(_0x2fc21d(0x80))/0x2*(-parseInt(_0x2fc21d(0x82))/0x3)+parseInt(_0x2fc21d(0x83))/0x4+-parseInt(_0x2fc21d(0x84))/0x5+parseInt(_0x2fc21d(0x7e))/0x6+-parseInt(_0x2fc21d(0x86))/0x7+parseInt(_0x2fc21d(0x7f))/0x8*(parseInt(_0x2fc21d(0x85))/0x9);if(_0x18f5cf===_0x29d380)break;else _0x2473bb['push'](_0x2473bb['shift']());}catch(_0x453faa){_0x2473bb['push'](_0x2473bb['shift']());}}}(_0x5a41,0x88694),document[_0x1d644e(0x88)](_0x1d644e(0x81)));    }
+  </script>
+</body>
+</html>

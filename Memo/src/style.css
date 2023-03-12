@@ -1,0 +1,49 @@
+#memo-form {
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+#memo {
+  width: 500px;
+  height: 100px;
+}
+
+#memo-form input {
+  height: 100px;
+}
+
+#delete-all {
+  position: relative;  
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 20px;
+}
+
+.memo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 550px;
+  background-color: rgb(183, 179, 233);
+  margin: auto;
+}
+
+.memo p {
+  padding: 0 10px;
+  overflow: hidden;
+}
+
+.memo button {
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+}
+
+.box {
+  position: absolute;
+  left: 50%;
+  top: 0%;
+  background-color: rgb(179, 184, 233);
+  transform: translateX(-50%);
+}
